@@ -24,7 +24,7 @@ def job_with_tokens(tokens: list) -> float:
                         result = operations[token](a, b)
                         stack.append(result)
                     else:
-                        print('Операция "//" разрешена только для целых чисел')
+                        print(f'Операция "{token}" разрешена только для целых чисел')
                         return
                 else:
                     result = operations[token](a, b)
@@ -43,7 +43,7 @@ def job_with_tokens(tokens: list) -> float:
                 number = float(token)
                 stack.append(number)
             except ValueError:
-                print("Ошибка: неверный токен", token)
+                print("Ошибка: неверный токен: ", token)
                 return
     if len(stack) != 1:
         print("Ошибка: выражение содержит лишние операнды")
@@ -53,11 +53,14 @@ def job_with_tokens(tokens: list) -> float:
 
 
 def calculator(expression: str) -> float:
+    if expression == '':
+        print("Введите непустуб строкую")
+        return "Была найдена ошибка."
     tokens = expression.replace('(', '').replace(')', '').split()  # разбиваем выражение на токены, игнорирую скобки
     res_of_calc = job_with_tokens(tokens)
     if res_of_calc != None:
         return res_of_calc
-    return 'Была найдена ошибка.'
+    return "Была найдена ошибка."
 
 
 if __name__ == '__main__':
