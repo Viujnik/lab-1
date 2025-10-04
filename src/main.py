@@ -54,7 +54,7 @@ def job_with_tokens(tokens: list) -> float:
 
 def calculator(expression: str) -> float:
     if expression == '':
-        print("Введите непустуб строкую")
+        print("Введите непустую строку")
         return "Была найдена ошибка."
     tokens = expression.replace('(', '').replace(')', '').split()  # разбиваем выражение на токены, игнорирую скобки
     res_of_calc = job_with_tokens(tokens)
